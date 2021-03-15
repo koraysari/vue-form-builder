@@ -163,7 +163,10 @@
 
                 // applying the configuration (base)
                 ...this.control,
-
+                dropdowns: {
+                    months: true,
+                    years: true
+                },
                 /**
                  * Post-render processing
                  */
