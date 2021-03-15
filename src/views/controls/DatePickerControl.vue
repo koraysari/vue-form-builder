@@ -167,6 +167,11 @@
                     months: true,
                     years: true
                 },
+                lang: 'tr',
+                buttonText: {
+                    apply: 'Seç',
+                    cancel: 'İptal',
+                },
                 /**
                  * Post-render processing
                  */
