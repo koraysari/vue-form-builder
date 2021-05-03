@@ -164,6 +164,7 @@
                 // applying the configuration (base)
                 ...this.control,
                 dropdowns: {
+                    minYear: 1920,
                     months: true,
                     years: true
                 },
