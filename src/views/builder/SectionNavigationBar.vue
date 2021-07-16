@@ -1,25 +1,53 @@
 <template>
     <div class="section-config">
         <div class="buttons">
+            <component
+                v-if="preCustomButtonView"
+                :is="preCustomButtonView"
+                :section="section"
+                :permissions="permissions"
+            ></component>
+
             <button :class="styles.BUTTON.PRIMARY"
                     title="Push Up"
                     @click="pushUp"
-                    v-html="$form.getIcon('arrowUp')"></button>
+                    v-html="$form.getIcon('arrowUp')"
+
+                    :disabled="!permissions.canReOrderingSection"
+            ></button>
 
             <button :class="styles.BUTTON.SECONDARY"
                     title="Push Down"
                     @click="pushDown"
-                    v-html="$form.getIcon('arrowDown')"></button>
+                    v-html="$form.getIcon('arrowDown')"
 
-            <button :class="styles.BUTTON.INFO" @click="openConfiguration">
+                    :disabled="!permissions.canReOrderingSection"
+            ></button>
+
+            <button
+                :class="styles.BUTTON.INFO"
+                @click="openConfiguration"
+                :disabled="!permissions.canEditSection"
+            >
                 <span v-html="$form.getIcon('cog')"></span>
                 <span>Configuration</span>
             </button>
 
-            <button :class="styles.BUTTON.DANGER" @click="deleteSection">
+            <button
+                :class="styles.BUTTON.DANGER"
+                @click="deleteSection"
+                :disabled="!permissions.canDeleteSection"
+            >
                 <span v-html="$form.getIcon('trash')"></span>
                 <span>Delete</span>
             </button>
+
+            <component
+                v-if="postCustomButtonView"
+                :is="postCustomButtonView"
+                :section="section"
+                :permissions="permissions"
+            ></component>
         </div>
     </div>
 </template>
@@ -28,6 +56,7 @@
     import {SECTION_SORT_MIXINS} from "@/mixins/section-sort-mixins";
     import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
     import {EVENT_CONSTANTS} from "@/configs/events";
+    import {SECTION_TYPES} from "@/configs/section";
     import SidebarRenderer from "@/libraries/sidebar-renderer.class";
     import SidebarSectionConfiguration from "@/views/builder/sidebar-config-views/SidebarSectionConfiguration";
 
@@ -38,8 +67,36 @@
             section: {
                 type: Object,
                 required: true,
-            }
+            },
+            permissions: Object
         },
+
+        computed: {
+            /**
+             * Accessor - Get Section Type Configuration
+             * @returns {{}}
+             */
+            sectionConfiguration() {
+                return SECTION_TYPES[this.section.type]
+            },
+
+            /**
+             * Get Pre Custom Button View
+             * @returns {VueComponent}
+             */
+            preCustomButtonView() {
+                return this.sectionConfiguration.preCustomButtonView
+            },
+
+            /**
+             * Get Post Custom Button View
+             * @returns {VueComponent}
+             */
+            postCustomButtonView() {
+                return this.sectionConfiguration.postCustomButtonView
+            },
+        },
+
         methods: {
             /**
              * Submit to delete a Section

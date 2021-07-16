@@ -6,6 +6,7 @@
 
 import Vue from 'vue'
 import App from './App.vue'
+// @ts-ignore
 import {VueFormBuilderPlugin} from "@/index";
 
 Vue.config.productionTip = false
