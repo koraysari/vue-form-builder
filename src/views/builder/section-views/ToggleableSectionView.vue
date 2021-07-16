@@ -27,16 +27,21 @@
 
                 <!--- SHOW CONTROLS / With Draggable --->
                 <draggable
-                        :class="draggableClasses"
-                        ghost-class="ghost"
-                        :handle="dragControlHandle"
-                        :list="section.controls"
-                        :group="dragGroup">
+                    :class="draggableClasses"
+                    ghost-class="ghost"
+                    :handle="dragControlHandle"
+                    :list="section.controls"
+                    :group="dragGroup"
+                    :disabled="!permissions.canReOrderingControl"
+                >
 
-                    <ControlView v-for="controlId in section.controls"
-                                 :key="controlId"
-                                 :control="controls[controlId]"
-                                 :parent-id="section.uniqueId" />
+                    <ControlView
+                        v-for="controlId in section.controls"
+                        :key="controlId"
+                        :control="controls[controlId]"
+                        :parent-id="section.uniqueId"
+                        :permissions="permissions"
+                    />
 
                     <p v-if="!hasControl">
                         Droppable Zone / Controls will be showed here...
@@ -44,7 +49,10 @@
                 </draggable>
 
                 <!-- Add More Control? -->
-                <AddControlControl :section="section" />
+                <AddControlControl
+                    v-if="permissions.canAddControl"
+                    :section="section"
+                />
             </div>
         </transition>
 

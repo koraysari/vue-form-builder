@@ -1,8 +1,7 @@
 # vue-form-builder
 [![npm version](https://badge.fury.io/js/v-form-builder.svg)](https://www.npmjs.com/package/v-form-builder)
 [![GitHub license](https://img.shields.io/github/license/sethsandaru/vue-form-builder.svg?style=flat-square)](https://github.com/sethsandaru/vue-form-builder/blob/master/LICENSE) ![img](https://img.shields.io/npm/dm/v-form-builder.svg)
-[![HitCount](http://hits.dwyl.io/sethsandaru/vue-form-builder.svg)](http://hits.dwyl.io/sethsandaru/vue-form-builder)
-[![img](https://img.shields.io/badge/documentation-full-green.svg?longCache=true&style=flat-square)](https://github.com/sethsandaru/vue-form-builder/wiki)
+[![img](https://img.shields.io/badge/documentation-full-green.svg?longCache=true&style=flat-square)](https://phattranminh96.gitbook.io/vue-form-builder/)
 
 A simple builder to help you generate a super form for your features/modules/sites,... Easy to use, create, upgrade, maintain,...
 Why need to code the form when you can use `Vue-Form-Builder` and render it with some extra steps :D
@@ -14,6 +13,7 @@ Advantages:
 - Extensibility (Your custom control, styling,...)
 - Form Validation? I got you fam.
 - Included HTML5 structure, no tricks or cheats.
+- **NO MORE JQUERY INCLUDED**
 
 Give this repo a ⭐ (star) if you actually like this and might use it for your project :D! Thank you!
 
@@ -53,7 +53,7 @@ npm i v-form-builder --save
 
 #### jsDelivr
 
-Latest version (@2.0.1)
+Latest version (@2.1.0)
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sethsandaru/vue-form-builder/dist/v-form-builder.min.css"> 
 <script src="https://cdn.jsdelivr.net/gh/sethsandaru/vue-form-builder/dist/v-form-builder.umd.min.js"></script>
@@ -96,6 +96,13 @@ My truly desire: Fewer dependencies as possible and try minimize the size as muc
 
 ## Release notes
 
+### 2.1.0 
+- Added Tab Section
+- Added Basic Role-based Configuration
+- Added `regex` Validation
+- Fixed bugs
+- Security updated
+
 ### 2.0.1
 - Added CSS Classes that worked for Material Design (Thanks to @abhimanusharma)
 - Fixed bugs
@@ -109,6 +116,14 @@ My truly desire: Fewer dependencies as possible and try minimize the size as muc
     
 ## License
 MIT License
+
+## Developing the Vue Form Builder
+For hard-core developers, of course, you can clone this repository and then getting started with these steps:
+
+- `npm install` - obviously
+- `npm run serve` - this will run the `main.ts` which is the main web page to see the Vue Form Builder
+
+Then you will know what you can take a look next: configs, components, views,...
 
 ## Custom Form Builder
 

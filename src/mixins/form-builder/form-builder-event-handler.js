@@ -19,7 +19,7 @@ const FORM_BUILDER_EVENT_HANDLER = {
          */
         sectionAndRowMapping(sectionId, rowId) {
             // push it into the section Rows...
-            // I can ensure that sectionId is exists to be retrieve
+            // I can ensure that sectionId is exists to be retrieved
             this.formData.sections[sectionId].rows.push(rowId)
         },
 
@@ -116,21 +116,49 @@ const FORM_BUILDER_EVENT_HANDLER = {
          * @param rowObject
          */
         rowNewAdded(rowObject) {
-            this.formData.rows[rowObject.uniqueId] = rowObject
+            // $set => reactive
+            this.$set(this.formData.rows, rowObject.uniqueId, rowObject)
+        },
+
+        /**
+         * Delete a specific row in the section
+         * @param {string} rowId rowId that need to be delete
+         * @param {string} sectionId row's current sectionId
+         */
+        rowDelete(rowId, sectionId) {
+            // first, delete row in section
+            const indexInSection = HELPER.findIndex(this.formData.sections[sectionId].rows, undefined, rowId)
+            this.formData.sections[sectionId].rows.splice(indexInSection, 1)
+
+            // second, remove row in the big rows
+            this.$delete(this.formData.rows, rowId)
+
+            // lastly, final init to which-ever components listen to the event after deleted
+            this.$formEvent.$emit(EVENT_CONSTANTS.BUILDER.ROW.DELETED, rowId, sectionId)
         },
 
 
         /**
          * Added new control to a section
-         * @param {string} sectionId
+         * @param {string} parentId
          * @param {Object} controlObj
          */
-        controlNewAdded(sectionId, controlObj) {
+        controlNewAdded(parentId, controlObj) {
             // add into big list
             this.$set(this.formData.controls, controlObj.uniqueId, controlObj)
 
-            // add controlID to section
-            this.formData.sections[sectionId].controls.push(controlObj.uniqueId)
+            // get type of the parent (section / row)
+            const type = this.formData.sections.hasOwnProperty(parentId)
+                ? 'section'
+                : 'row';
+            const controlUniqueId = controlObj.uniqueId
+
+            // add controlID to section / row
+            if (type === 'section') {
+                this.formData.sections[parentId].controls.push(controlUniqueId)
+            } else {
+                this.formData.rows[parentId].controls.push(controlUniqueId)
+            }
         },
 
         /**
@@ -140,7 +168,9 @@ const FORM_BUILDER_EVENT_HANDLER = {
          * @afterHandled Emit an event to notify the deletion is complete
          */
         controlDeletion(parentId, controlId) {
-            let type = this.formData.sections.hasOwnProperty(parentId) ? 'section' : 'row';
+            const type = this.formData.sections.hasOwnProperty(parentId)
+                ? 'section'
+                : 'row';
 
             // FIRST: We delete the relationship in section/row
             if (type === 'section') {
@@ -185,6 +215,7 @@ const FORM_BUILDER_EVENT_HANDLER = {
 
         // row events
         this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.ROW.CREATE, this.rowNewAdded)
+        this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.ROW.DELETE, this.rowDelete)
 
         // control events
         this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.CONTROL.CREATE, this.controlNewAdded)

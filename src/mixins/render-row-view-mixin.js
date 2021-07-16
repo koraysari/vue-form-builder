@@ -2,14 +2,10 @@
  * Base extendation for the Row-View - Form-Builder
  */
 import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
-import draggable from 'vuedraggable'
-import AddControlToRowControl from "@/views/builder/add-controls/AddControlToRowControl";
-import ControlView from "@/views/builder/ControlView";
+import ControlView from "@/views/renderer/ControlView";
 
-const ROW_VIEW_MIXIN = {
+const RENDERER_ROW_VIEW_MIXIN = {
     components: {
-        draggable,
-        AddControlToRowControl,
         ControlView
     },
     mixins: [STYLE_INJECTION_MIXIN],
@@ -39,30 +35,25 @@ const ROW_VIEW_MIXIN = {
             required: true,
         },
 
-        permissions: Object
+        valueContainer: Object,
+        validationErrors: Object,
     },
 
     computed: {
-        /**
-         * Property that will be used to drag - for Control Only
-         */
-        dragControlHandle() {
-            return ".option-control.drag-item"
-        },
 
         /**
-         * Base group of drag/drop
-         * We can share this for each section/row
+         * Check if we had controls
+         * @returns {boolean}
          */
-        dragGroup() {
-            return "v-form-builder-control"
+        hasControls() {
+            return this.row.controls.length > 0
         },
 
         /**
          * Classes for draggable
          * @returns {(string|string)[]}
          */
-        draggableClasses() {
+        containerClasses() {
             return [
                 this.styles.ROW,
                 'control-list-container',
@@ -73,16 +64,8 @@ const ROW_VIEW_MIXIN = {
                 )
             ]
         },
-
-        /**
-         * Check if we had controls
-         * @returns {boolean}
-         */
-        hasControls() {
-            return this.row.controls.length > 0
-        }
     },
 }
 export {
-    ROW_VIEW_MIXIN
+    RENDERER_ROW_VIEW_MIXIN
 }
