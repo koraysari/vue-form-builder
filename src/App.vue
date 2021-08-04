@@ -46,6 +46,7 @@
 </template>
 
 <script>
+console.log(1910);
     /**
      * NOTE - This file only exists for development purpose.
      */
