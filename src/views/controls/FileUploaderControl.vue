@@ -26,7 +26,7 @@
     </VueUploadComponent>
     <button
       type="button"
-      class="btn btn-success"
+      class="button"
       v-if="!$refs.upload || !$refs.upload.active"
       @click.prevent="$refs.upload.active = true"
     >
@@ -35,7 +35,7 @@
     </button>
     <button
       type="button"
-      class="btn btn-danger"
+      class="button"
       v-else
       @click.prevent="$refs.upload.active = false"
     >

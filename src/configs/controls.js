@@ -199,7 +199,7 @@ const CONTROLS = {
         configData: {
             // for styling
             buttonLabel: "Select File",
-            buttonClasses: "btn btn-primary",
+            buttonClasses: "button",
 
             // for components
             postActionURL: "1",
