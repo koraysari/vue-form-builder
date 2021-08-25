@@ -142,9 +142,9 @@ export default {
     },
 
     configuredPostData() {
-      if (!this.control.postData.length) {
+      /* if (!this.control.postData.length) {
         return {};
-      }
+      } */
 
       const postItems = {};
       this.control.postData.forEach((keyValueItem) => {
