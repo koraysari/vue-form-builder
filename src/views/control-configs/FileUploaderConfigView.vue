@@ -13,7 +13,7 @@
 
 
         <div :class="styles.FORM.FORM_GROUP">
-            <label>(API) Post-Action URL</label>
+            <label>Accelerator ID</label>
             <input type="text" :class="styles.FORM.FORM_CONTROL" v-model="control.postActionURL">
         </div>
 

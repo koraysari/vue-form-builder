@@ -151,6 +151,8 @@ export default {
         postItems[keyValueItem.key] = keyValueItem.value;
       });
 
+      postItems['accelerator_id'] = this.control.postActionURL;
+
       return postItems;
     },
   },

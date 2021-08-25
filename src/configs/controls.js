@@ -202,7 +202,7 @@ const CONTROLS = {
             buttonClasses: "btn btn-primary",
 
             // for components
-            postActionURL: "/your-api-post-url-to-upload",
+            postActionURL: "1",
             extensions: ".gif,.png,.jpg,.jpeg",
             accept: "image/gif,image/jpeg,image/png",
             maxSize: 1000, // in bytes - 0 unlimited
