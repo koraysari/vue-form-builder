@@ -38,29 +38,36 @@
             </label>
 
             <!-- Im using div instead of table. Table too small :( -->
-            <div :class="['list-selection']" v-for="(listItem, iItem) in control.items" :key="iItem">
+            <draggable
+                :list="control.items"
+                ghost-class="ghost"
+                :move="checkMove"
+                @start="dragging = true"
+                @end="dragging = false"
+            >
+                <div :class="['list-selection', 'form-inline']" v-for="(listItem, iItem) in control.items" :key="iItem">
 
-                <div class="tool-block">
-                    <span class="pointer"
-                          @click="removeListItem(iItem)"
-                          v-html="$form.getIcon('close', '16px', '16px', 'red')">
-                    </span>
-                </div>
+                    <div class="tool-block">
+                        <span class="pointer"
+                            @click="removeListItem(iItem)"
+                            v-html="$form.getIcon('close', '16px', '16px', 'red')">
+                        </span>
+                    </div>
+                    <div :class="styles.FORM.FORM_GROUP + ' col-6 px-0 w-100'">
+                        <label>Item Value</label>
+                        <input type="text" :class="styles.FORM.FORM_CONTROL + ' w-100'"
+                            placeholder="Radio/Checkbox-Value"
+                            v-model="listItem.value">
+                    </div>
 
-                <div :class="styles.FORM.FORM_GROUP">
-                    <label>Item Value</label>
-                    <input type="text" :class="styles.FORM.FORM_CONTROL"
-                           placeholder="Radio/Checkbox-Value"
-                           v-model="listItem.value">
+                    <div :class="styles.FORM.FORM_GROUP + ' col-6 px-0 w-100'">
+                        <label>Label Text</label>
+                        <input type="text" :class="styles.FORM.FORM_CONTROL + ' w-100'"
+                            placeholder="Label text"
+                            v-model="listItem.text">
+                    </div>
                 </div>
-
-                <div :class="styles.FORM.FORM_GROUP">
-                    <label>Label Text</label>
-                    <input type="text" :class="styles.FORM.FORM_CONTROL"
-                           placeholder="Label text"
-                           v-model="listItem.text">
-                </div>
-            </div>
+            </draggable>
         </div>
     </div>
 </template>
@@ -69,10 +76,15 @@
     import {CONTROL_SPECIAL_CONFIG_MIXIN} from "@/mixins/control-special-config-mixin";
     import {RADIO_CHECKBOX_POSITION, RADIO_CHECKBOX_STYLE} from "@/configs/control-config-enum";
     import ListItem from "@/libraries/list-item.class";
+    import draggable from 'vuedraggable'
 
     export default {
         name: "RadioCheckboxConfigView",
         mixins: [CONTROL_SPECIAL_CONFIG_MIXIN],
+
+        components: {
+            draggable,
+        },
 
         methods: {
             /**
@@ -89,6 +101,10 @@
              */
             removeListItem(index) {
                 this.control.items.splice(index, 1)
+            },
+
+            checkMove: function(e) {
+                window.console.log("Future index: " + e.draggedContext.futureIndex);
             }
         },
 

@@ -24,7 +24,7 @@
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2",
     "vue-upload-component": "^2.8.22",
-    "vuedraggable": "^2.23.2"
+    "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.3",

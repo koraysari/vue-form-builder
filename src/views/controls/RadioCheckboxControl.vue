@@ -3,7 +3,7 @@
         <div v-if="isSameBlock" class="radio-checkbox" :class="lineNextClasses">
 
             <label v-for="listItem in control.items"
-                   :key="listItem.value"
+                   :key="listItem.text"
                    :class="positionClasses">
                 <!--- For structural, line/next is same --->
                 <input :type="control.type"
@@ -14,6 +14,8 @@
                 >
 
                 {{listItem.text}}
+
+                <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" v-model="listItem.value">
 
                 <!--- Line By Line will need this <br> --->
                 <br v-if="displayMode === 'line'" />
@@ -26,7 +28,7 @@
 
                 <div :class="[styles.COLUMNS.COL6, positionClasses]"
                      v-for="listItem in control.items"
-                     :key="listItem.value">
+                     :key="listItem.text">
 
                     <label>
                         <!--- Input things are same, hmm - TODO: DRY ?? --->
@@ -38,6 +40,9 @@
                         >
 
                         {{listItem.text}}
+
+                        <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" v-model="listItem.value">
+                        
                     </label>
                 </div>
 
