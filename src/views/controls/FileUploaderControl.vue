@@ -9,7 +9,7 @@
       ref="upload"
       v-model="files"
       post-action="/file/uploader"
-      :id="control.uniqueId"
+      :inputId="control.uniqueId"
       :class="controlClasses"
       :multiple="control.isMultiple"
       :accept="control.accept"
@@ -40,7 +40,7 @@
       @click.prevent="$refs.upload.active = false"
     >
       <i class="fa fa-stop" aria-hidden="true"></i>
-      Yüklemeyi Durdur
+      Yükleniyor...
     </button>
   </div>
 </template>
