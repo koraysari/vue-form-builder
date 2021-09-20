@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li v-for="file in files" v-bind:key="file.id">
-        {{ file.name }} - Error: {{ file.error }}, Success: {{ file.success }}
+        {{ file.name }} - <span v-if="file.error"> Error: {{ file.error }} </span> <span v-if="file.success"> Success: {{ file.success }} </span>
       </li>
     </ul>
     <VueUploadComponent
