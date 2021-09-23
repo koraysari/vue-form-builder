@@ -59,17 +59,11 @@
         </div>
 
         <div v-if="sectionConfiguration.logic" :class="styles.FORM.FORM_GROUP">
-            <label>Condition Answer</label>
-            <select type="text"
-                    :class="styles.FORM.FORM_CONTROL"
-                    v-model="sectionConfiguration.logicControlValue"
-            >
-                <option v-for="controlOption in controlOptions"
-                        :key="controlOption.value"
-                        :value="controlOption.value">
-                        {{controlOption.text}}
-                </option>
-            </select>
+            <div>Condition Answers</div>
+            <div v-for="controlOption in controlOptions" :key="controlOption.value">
+                <input type="checkbox" :value="controlOption.value" v-model="sectionConfiguration.logicControlValue">
+                {{controlOption.text}}
+            </div>
         </div>
 
         <div class="buttons">

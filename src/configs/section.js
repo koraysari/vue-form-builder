@@ -88,7 +88,7 @@ const SECTION_DEFAULT_DATA = {
     controls: [], // array of controlIds
     logic: false,
     logicControlId: '',
-    logicControlValue: '',
+    logicControlValue: [],
 };
 
 /**

@@ -37,7 +37,7 @@
         methods: {
             checkLogic() {
                 if(!this.section.logic) return 1;
-                return this.valueContainer[this.section.logicControlId] == this.section.logicControlValue;
+                return this.section.logicControlValue.includes(this.valueContainer[this.section.logicControlId]);
             }
         }
 
