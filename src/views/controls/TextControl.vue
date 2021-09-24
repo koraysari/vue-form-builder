@@ -4,13 +4,13 @@
                 :id="control.uniqueId"
                 type="text"
                 :class="controlFieldClass"
-                v-model="totalCharacter"
+                :value="value"
                 :rows="control.rows"
                 :name="control.name"
                 :placeholder="control.placeholderText"
                 @input="updateValue($event.target.value)"
         ></textarea>
-        <span class="totalCharacter">{{ totalCharacter ? totalCharacter.length : 0 }} karakter</span>
+        <span class="totalCharacter">{{ value.length }} karakter</span>
     </span>
 </template>
 
@@ -31,7 +31,6 @@
     .totalCharacter {
         color: red;
         font-size: 14px;
-        line-height: 14px;
         float: right;
     }
 </style>

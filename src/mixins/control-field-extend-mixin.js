@@ -23,7 +23,6 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
     // global data-field - available to override
     data: () =>({
         stopDefaultValueAssign: false,
-        totalCharacter: null,
     }),
 
     /**
