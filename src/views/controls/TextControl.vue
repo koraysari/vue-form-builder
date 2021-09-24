@@ -30,7 +30,7 @@
 <style scoped>
     .totalCharacter {
         color: red;
-        font-size: 14px;
+        font-size: 11px;
         float: right;
     }
 </style>

@@ -1,12 +1,15 @@
 <template>
-    <input :id="control.uniqueId"
-           type="text"
-           :class="controlFieldClass"
-           :value="value"
-           :name="control.name || control.uniqueId"
-           :placeholder="control.placeholderText"
-           @input="updateValue($event.target.value)"
-    />
+    <span>
+        <input :id="control.uniqueId"
+            type="text"
+            :class="controlFieldClass"
+            :value="value"
+            :name="control.name || control.uniqueId"
+            :placeholder="control.placeholderText"
+            @input="updateValue($event.target.value)"
+        />
+        <span class="totalCharacter">{{ value.length }} karakter</span>
+    </span>
 </template>
 
 <script>
@@ -23,5 +26,9 @@
 </script>
 
 <style scoped>
-
+    .totalCharacter {
+        color: red;
+        font-size: 11px;
+        float: right;
+    }
 </style>
