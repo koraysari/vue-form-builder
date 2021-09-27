@@ -61,7 +61,7 @@
         <div v-if="sectionConfiguration.logic" :class="styles.FORM.FORM_GROUP">
             <div>Condition Answers</div>
             <div v-for="controlOption in controlOptions" :key="controlOption.value">
-                <input type="checkbox" :value="controlOption.value" v-model="sectionConfiguration.logicControlValue">
+                <input name="logic_answers[]" type="checkbox" :value="controlOption.value" v-model="sectionConfiguration.logicControlValue">
                 {{controlOption.text}}
             </div>
         </div>
