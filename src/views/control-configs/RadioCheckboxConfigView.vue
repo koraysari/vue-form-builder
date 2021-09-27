@@ -69,6 +69,12 @@
                 </div>
             </draggable>
         </div>
+
+        <div :class="styles.FORM.FORM_GROUP">
+            <label>Fast Addition</label>
+            <textarea class="w-100" rows="10" v-model="fast_addition"></textarea>
+            <button @click="fastAddition">Add</button>
+        </div>
     </div>
 </template>
 
@@ -81,6 +87,10 @@
     export default {
         name: "RadioCheckboxConfigView",
         mixins: [CONTROL_SPECIAL_CONFIG_MIXIN],
+
+        data: () => ({
+            fast_addition: ''
+        }),
 
         components: {
             draggable,
@@ -105,6 +115,17 @@
 
             checkMove: function(e) {
                 window.console.log("Future index: " + e.draggedContext.futureIndex);
+            },
+
+            fastAddition: function() {
+                var a = this.fast_addition.split(","),
+                    i;
+
+                for (i = 0; i < a.length; i++) {
+                    this.control.items.push(new ListItem(a[i], a[i]));
+                }
+
+                this.fast_addition = "";
             }
         },
 
