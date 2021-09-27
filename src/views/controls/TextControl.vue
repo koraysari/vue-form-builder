@@ -10,7 +10,7 @@
                 :placeholder="control.placeholderText"
                 @input="updateValue($event.target.value)"
         ></textarea>
-        <span class="totalCharacter">{{ value.length }} karakter</span>
+        <span class="totalCharacter">{{ value ? value.length : 0 }} karakter</span>
     </span>
 </template>
 

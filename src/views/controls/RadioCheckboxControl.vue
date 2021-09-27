@@ -15,7 +15,7 @@
 
                 {{listItem.text}}
 
-                <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" v-model="listItem.value">
+                <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" v-model="digerValue" @change="digerChangeEvent">
 
                 <!--- Line By Line will need this <br> --->
                 <br v-if="displayMode === 'line'" />
@@ -41,7 +41,7 @@
 
                         {{listItem.text}}
 
-                        <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" v-model="listItem.value">
+                        <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" v-model="digerValue" @change="digerChangeEvent">
                         
                     </label>
                 </div>
@@ -72,7 +72,8 @@
 
         data: () => ({
             stopDefaultValueAssign: true,
-            defaultBucket: ''
+            defaultBucket: '',
+            digerValue: ''
         }),
 
         created() {
@@ -157,6 +158,29 @@
                 // For Checkbox, name will always be Array Mode (name[])
                 return (this.controlName) + "[]"
             }
-        }
+        },
+
+        methods: {
+            digerChangeEvent () {
+                if(this.isRadio) {
+                    this.updateValue(this.digerValue);
+                } else {
+                    var difference = this.value.filter(x => this.control.items.some((item => item.value === x)));
+                    difference.push(this.digerValue)
+                    console.log(difference);
+                    this.updateValue(difference);
+                }
+            },
+        },
+
+        watch: {
+            value: function (newValue, oldValue) {
+                if(newValue == 'Diğer') {
+                    if(this.isRadio) {
+                        this.updateValue(this.digerValue);
+                    }
+                }
+            }
+        },
     }
 </script>
