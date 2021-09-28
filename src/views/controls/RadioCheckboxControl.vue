@@ -15,7 +15,7 @@
 
                 {{listItem.text}}
 
-                <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" v-model="digerValue" @change="digerChangeEvent">
+                <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
 
                 <!--- Line By Line will need this <br> --->
                 <br v-if="displayMode === 'line'" />
@@ -41,7 +41,7 @@
 
                         {{listItem.text}}
 
-                        <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" v-model="digerValue" @change="digerChangeEvent">
+                        <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
                         
                     </label>
                 </div>
