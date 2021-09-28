@@ -16,6 +16,12 @@
                    :class="styles.FORM.FORM_CONTROL"
                    v-model.number="control.decimalPlace">
         </div>
+        <div :class="styles.FORM.FORM_GROUP">
+            <label>
+                Is a phone number input?
+                <input type="checkbox" v-model="control.isPhone">
+            </label>
+        </div>
     </div>
 </template>
 

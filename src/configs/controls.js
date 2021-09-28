@@ -60,6 +60,8 @@ const CONTROLS = {
         fieldComponent: NumberControl,
         configComponent: NumberConfigView,
 
+        isPhone: false,
+
         /**
          * As same like Vue-JS Property Default Data
          * Specific field need some special data-type/structure, they need to

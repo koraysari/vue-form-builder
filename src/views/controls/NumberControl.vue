@@ -1,16 +1,21 @@
 <template>
-    <input :id="control.uniqueId"
-           type="number"
-           :class="controlFieldClass"
-           :value="number"
-           :name="control.name"
-           :placeholder="control.placeholderText"
-           @input="convertToNumber($event.target.value)"
-    />
+
+    <span>
+        <VuePhoneNumberInput v-if="control.isPhone" v-model="tel" @update="onUpdate" :dropdownOptions="dropdownOptions" defaultCountry="TR" mode="auto" disabledFormatting="false" validCharactersOnly="true"/>
+        <input v-else :id="control.uniqueId"
+            type="number"
+            :class="controlFieldClass"
+            :value="number"
+            :name="control.name"
+            :placeholder="control.placeholderText"
+            @input="convertToNumber($event.target.value)"
+        />
+    </span>
 </template>
 
 <script>
     import {CONTROL_FIELD_EXTEND_MIXIN} from "@/mixins/control-field-extend-mixin";
+    import VuePhoneNumberInput from 'vue-phone-number-input';
 
     /**
      * Number Control
@@ -22,11 +27,21 @@
         name: "NumberControl",
         mixins: [CONTROL_FIELD_EXTEND_MIXIN],
 
+        components: {
+            VuePhoneNumberInput,
+        },
+
         data: () => ({
             number: 0,
             stopDefaultValueAssign: true,
 
-            previewMode: "0"
+            previewMode: "0",
+            tel: '',
+            dropdownOptions : {
+                showDialCodeInSelection : true,
+                showDialCodeInList : true,
+                showFlags : true
+            }
         }),
 
         methods: {
@@ -58,6 +73,13 @@
              */
             setValue(val) {
                 this.convertToNumber(val)
+            },
+
+            onUpdate (payload) {
+                console.log(payload);
+                if(payload.isValid) {
+                    this.updateValue(payload.formattedNumber);
+                }
             }
         },
 
@@ -80,6 +102,4 @@
     }
 </script>
 
-<style scoped>
-
-</style>
+<style src="vue-phone-number-input/dist/vue-phone-number-input.css"></style>
