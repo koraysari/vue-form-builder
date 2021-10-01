@@ -25923,19 +25923,18 @@ var DropdownControl_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var DropdownControl = (DropdownControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"42e3ee47-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/FileUploaderControl.vue?vue&type=template&id=cd30bd9a&
-var FileUploaderControlvue_type_template_id_cd30bd9a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('ul',_vm._l((_vm.files),function(file){return _c('li',{key:file.id},[_vm._v(" "+_vm._s(file.name)+" - "),(file.error)?_c('span',[_vm._v(" Error: "+_vm._s(file.error)+" ")]):_vm._e(),_vm._v(" "),(file.success)?_c('span',[_vm._v(" Success: "+_vm._s(file.success)+" ")]):_vm._e()])}),0),_c('VueUploadComponent',{ref:"upload",class:_vm.controlClasses,attrs:{"post-action":"/file/uploader","inputId":_vm.control.uniqueId,"multiple":_vm.control.isMultiple,"accept":_vm.control.accept,"maximum":_vm.maximumFilesCanBeUploaded,"headers":_vm.configuredHeaders,"data":_vm.configuredPostData},on:{"input-file":_vm.inputFile,"input-filter":_vm.inputFilter},model:{value:(_vm.files),callback:function ($$v) {_vm.files=$$v},expression:"files"}},[_c('button',{class:_vm.control.buttonClasses,domProps:{"textContent":_vm._s(_vm.control.buttonLabel)}})]),(!_vm.$refs.upload || !_vm.$refs.upload.active)?_c('button',{staticClass:"btn btn-success button",attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();_vm.$refs.upload.active = true}}},[_c('i',{staticClass:"fa fa-arrow-up",attrs:{"aria-hidden":"true"}}),_vm._v(" Yüklemeye Başla ")]):_c('button',{staticClass:"btn btn-danger button",attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();_vm.$refs.upload.active = false}}},[_c('i',{staticClass:"fa fa-stop",attrs:{"aria-hidden":"true"}}),_vm._v(" Yükleniyor... ")])],1)}
-var FileUploaderControlvue_type_template_id_cd30bd9a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"42e3ee47-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/FileUploaderControl.vue?vue&type=template&id=99d9a1da&
+var FileUploaderControlvue_type_template_id_99d9a1da_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('ul',_vm._l((_vm.files),function(file){return _c('li',{key:file.id},[_vm._v(" "+_vm._s(file.name)+" - "),(file.error)?_c('span',[_vm._v(" Error: "+_vm._s(file.error)+" ")]):_vm._e(),_vm._v(" "),(file.success)?_c('span',[_vm._v(" Success: "+_vm._s(file.success)+" ")]):_vm._e()])}),0),_c('VueUploadComponent',{ref:"upload",class:_vm.controlClasses,attrs:{"post-action":"/file/uploader","inputId":_vm.control.uniqueId,"multiple":_vm.control.isMultiple,"accept":_vm.control.accept,"maximum":_vm.maximumFilesCanBeUploaded,"headers":_vm.configuredHeaders,"data":_vm.configuredPostData},on:{"input-file":_vm.inputFile,"input-filter":_vm.inputFilter},model:{value:(_vm.files),callback:function ($$v) {_vm.files=$$v},expression:"files"}},[_c('button',{class:_vm.control.buttonClasses,domProps:{"textContent":_vm._s(_vm.control.buttonLabel)}})]),(!_vm.$refs.upload || !_vm.$refs.upload.active)?_c('button',{staticClass:"btn btn-success button",attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();_vm.$refs.upload.active = true}}},[_c('i',{staticClass:"fa fa-arrow-up",attrs:{"aria-hidden":"true"}}),_vm._v(" Yüklemeye Başla ")]):_c('button',{staticClass:"btn btn-danger button",attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();_vm.$refs.upload.active = false}}},[_c('i',{staticClass:"fa fa-stop",attrs:{"aria-hidden":"true"}}),_vm._v(" Yükleniyor... ")])],1)}
+var FileUploaderControlvue_type_template_id_99d9a1da_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/controls/FileUploaderControl.vue?vue&type=template&id=cd30bd9a&
+// CONCATENATED MODULE: ./src/views/controls/FileUploaderControl.vue?vue&type=template&id=99d9a1da&
 
 // EXTERNAL MODULE: ./node_modules/vue-upload-component/dist/vue-upload-component.js
 var vue_upload_component = __webpack_require__("8019");
 var vue_upload_component_default = /*#__PURE__*/__webpack_require__.n(vue_upload_component);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/FileUploaderControl.vue?vue&type=script&lang=js&
-
 
 //
 //
@@ -26032,11 +26031,11 @@ var vue_upload_component_default = /*#__PURE__*/__webpack_require__.n(vue_upload
      * @return undefined
      */
     inputFilter: function inputFilter(newFile, oldFile, prevent) {
-      if (newFile && !oldFile) {
-        // Filter non-image file
-        if (!/\.(jpeg|jpe|jpg|gif|png|webp)$/i.test(newFile.name)) {
+      if (newFile && !oldFile) {// Filter non-image file
+
+        /* if (!/\.(jpeg|jpe|jpg|gif|png|webp)$/i.test(newFile.name)) {
           return prevent();
-        }
+        } */
       } // Create a blob field
 
 
@@ -26104,8 +26103,8 @@ var FileUploaderControlvue_type_style_index_0_lang_css_ = __webpack_require__("b
 
 var FileUploaderControl_component = Object(componentNormalizer["a" /* default */])(
   controls_FileUploaderControlvue_type_script_lang_js_,
-  FileUploaderControlvue_type_template_id_cd30bd9a_render,
-  FileUploaderControlvue_type_template_id_cd30bd9a_staticRenderFns,
+  FileUploaderControlvue_type_template_id_99d9a1da_render,
+  FileUploaderControlvue_type_template_id_99d9a1da_staticRenderFns,
   false,
   null,
   null,
