@@ -76,10 +76,7 @@
             },
 
             onUpdate (payload) {
-                console.log(payload);
-                if(payload.isValid) {
-                    this.updateValue(payload.formattedNumber);
-                }
+                this.updateValue(payload.formattedNumber);
             }
         },
 
