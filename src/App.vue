@@ -41,12 +41,12 @@
                 <h4>Form Input Data</h4>
                 <pre class="code"><code class="code" v-html="JSON.stringify(formInputData, null, 2)"></code></pre>
             </div>
+            <button v-on:click="runValidation">Run Validation</button>
         </div>
     </div>
 </template>
 
 <script>
-console.log(1910);
     /**
      * NOTE - This file only exists for development purpose.
      */
@@ -106,6 +106,10 @@ console.log(1910);
                     },
                     "total_value": faker.finance.amount()
                 });
+            },
+
+            runValidation: function() {
+                this.$formEvent.$emit('renderer.run_validation', 'test');
             },
         }
     }

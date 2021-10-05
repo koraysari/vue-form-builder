@@ -40991,6 +40991,18 @@ var style_injection_mixin = __webpack_require__("28fe");
 // EXTERNAL MODULE: ./src/mixins/form-builder/form-builder-methods.js + 1 modules
 var form_builder_methods = __webpack_require__("bcc7");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.array.includes.js
+var es7_array_includes = __webpack_require__("6762");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.includes.js
+var es6_string_includes = __webpack_require__("2fdb");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js + 5 modules
+var slicedToArray = __webpack_require__("768b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.object.entries.js
+var es7_object_entries = __webpack_require__("ffc1");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.symbol.async-iterator.js
 var es7_symbol_async_iterator = __webpack_require__("ac4d");
 
@@ -41005,12 +41017,6 @@ var es6_array_from = __webpack_require__("1c4c");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.to-string.js
 var es6_regexp_to_string = __webpack_require__("6b54");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js + 5 modules
-var slicedToArray = __webpack_require__("768b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.object.entries.js
-var es7_object_entries = __webpack_require__("ffc1");
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js
 var classCallCheck = __webpack_require__("d225");
@@ -41269,6 +41275,8 @@ function isRegexPassed(fieldValue, regexRule) {
 
 
 
+
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -41298,6 +41306,7 @@ var validation_Validation = /*#__PURE__*/function () {
    */
   function Validation(valueContainer, controls) {
     var definedClosures = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    var sections = arguments.length > 3 ? arguments[3] : undefined;
 
     Object(classCallCheck["a" /* default */])(this, Validation);
 
@@ -41307,10 +41316,13 @@ var validation_Validation = /*#__PURE__*/function () {
 
     Object(defineProperty["a" /* default */])(this, "customClosures", {});
 
+    Object(defineProperty["a" /* default */])(this, "sections", null);
+
     Object(defineProperty["a" /* default */])(this, "validationResult", null);
 
     this.valueContainer = valueContainer;
     this.validationClosures = definedClosures;
+    this.sections = sections;
     this.setRules(controls);
   }
   /**
@@ -41324,7 +41336,17 @@ var validation_Validation = /*#__PURE__*/function () {
     value: function setRules(controls) {
       var _this = this;
 
-      var rules = {}; // traversal all control and pick the validations info
+      var rules = {};
+      var except = [];
+      Object.entries(this.sections).forEach(function (section) {
+        var _section = Object(slicedToArray["a" /* default */])(section, 2),
+            sectionId = _section[0],
+            sectionItem = _section[1];
+
+        if (sectionItem.logic && _this.valueContainer.hasOwnProperty(sectionItem.logicControlId) && !sectionItem.logicControlValue.includes(_this.valueContainer[sectionItem.logicControlId])) {
+          except = except.concat(sectionItem.controls);
+        }
+      }); // traversal all control and pick the validations info
 
       Object.entries(controls).forEach(function (controlInfo) {
         var _controlInfo = Object(slicedToArray["a" /* default */])(controlInfo, 2),
@@ -41440,6 +41462,13 @@ var alert_dialog = __webpack_require__("caca");
 
 
 
+
+
+
+
+
+
+
 var VALIDATION_MIXIN = {
   data: function data() {
     return {
@@ -41451,12 +41480,32 @@ var VALIDATION_MIXIN = {
      * Run the validation process
      */
     runValidation: function runValidation() {
+      var _this = this;
+
       // always clear validation before run...
       this.$set(this, 'validationErrors', {}); // run the validation
 
-      var result = this.$form.Validation.run(); // field-error handling
+      var result = this.$form.Validation.run();
+      var except = [];
+      Object.entries(this.formData.sections).forEach(function (section) {
+        var _section = Object(slicedToArray["a" /* default */])(section, 2),
+            sectionId = _section[0],
+            sectionItem = _section[1];
 
-      if (result.errors()) {
+        if (sectionItem.logic && _this.valueContainer.hasOwnProperty(sectionItem.logicControlId) && !sectionItem.logicControlValue.includes(_this.valueContainer[sectionItem.logicControlId])) {
+          except = except.concat(sectionItem.controls);
+        }
+      }); //console.log(except);
+
+      console.log(Object.keys(result.errorBuckets).length);
+      var newExcept = [];
+      except.forEach(function (element) {
+        if (result.errorBuckets.hasOwnProperty(element)) {
+          newExcept.push(element);
+        }
+      }); // field-error handling
+
+      if (result.errors() && Object.keys(result.errorBuckets).length != newExcept.length) {
         // use set for reactive...
         this.$set(this, 'validationErrors', result.errorBuckets);
 
@@ -41477,7 +41526,7 @@ var VALIDATION_MIXIN = {
    */
   created: function created() {
     // create validation instance
-    this.$form.Validation = new validation_Validation(this.valueContainer, this.formData.controls, this.$form.validationClosures || {}); // listen to validation invoke
+    this.$form.Validation = new validation_Validation(this.valueContainer, this.formData.controls, this.$form.validationClosures || {}, this.formData.sections); // listen to validation invoke
 
     this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].RENDERER.RUN_VALIDATION, this.runValidation);
   }
@@ -41498,7 +41547,7 @@ var SectionContainervue_type_template_id_f0fac5a2_scoped_true_staticRenderFns = 
 // CONCATENATED MODULE: ./src/views/renderer/SectionContainer.vue?vue&type=template&id=f0fac5a2&scoped=true&
 
 // EXTERNAL MODULE: ./src/configs/section.js + 115 modules
-var section = __webpack_require__("dd3c");
+var configs_section = __webpack_require__("dd3c");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/SectionContainer.vue?vue&type=script&lang=js&
 //
@@ -41528,7 +41577,7 @@ var section = __webpack_require__("dd3c");
   },
   computed: {
     sectionViewComponent: function sectionViewComponent() {
-      return section["b" /* SECTION_TYPES */][this.section.type].rendererView;
+      return configs_section["b" /* SECTION_TYPES */][this.section.type].rendererView;
     }
   }
 });

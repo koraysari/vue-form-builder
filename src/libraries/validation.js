@@ -11,6 +11,7 @@ export default class Validation {
     rules = null
     valueContainer = null
     customClosures = {}
+    sections = null
 
     /**
      * Validation Result. Always create a new instance every time the validation is run
@@ -24,9 +25,10 @@ export default class Validation {
      * @param {Object} controls
      * @param {Object} definedClosures
      */
-    constructor(valueContainer, controls, definedClosures = {}) {
+    constructor(valueContainer, controls, definedClosures = {}, sections) {
         this.valueContainer = valueContainer
         this.validationClosures = definedClosures
+        this.sections = sections
         this.setRules(controls)
     }
 
@@ -36,6 +38,15 @@ export default class Validation {
      */
     setRules(controls) {
         const rules = {}
+        var except = [];
+
+        Object.entries(this.sections).forEach(section => {
+            let [sectionId, sectionItem] = section
+
+            if(sectionItem.logic && this.valueContainer.hasOwnProperty(sectionItem.logicControlId) && !sectionItem.logicControlValue.includes(this.valueContainer[sectionItem.logicControlId])) {
+                except = except.concat(sectionItem.controls);
+            }
+        })
 
         // traversal all control and pick the validations info
         Object.entries(controls).forEach(controlInfo => {

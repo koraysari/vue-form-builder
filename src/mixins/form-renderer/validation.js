@@ -18,8 +18,30 @@ const VALIDATION_MIXIN = {
             // run the validation
             const result = this.$form.Validation.run()
 
+            var except = [];
+
+            Object.entries(this.formData.sections).forEach(section => {
+                let [sectionId, sectionItem] = section
+
+                if(sectionItem.logic && this.valueContainer.hasOwnProperty(sectionItem.logicControlId) && !sectionItem.logicControlValue.includes(this.valueContainer[sectionItem.logicControlId])) {
+                    except = except.concat(sectionItem.controls);
+                }
+            })
+
+            //console.log(except);
+
+            console.log(Object.keys(result.errorBuckets).length);
+
+            var newExcept = [];
+
+            except.forEach(function(element) {
+                if(result.errorBuckets.hasOwnProperty(element)) {
+                    newExcept.push(element);
+                }
+            })
+
             // field-error handling
-            if (result.errors()) {
+            if (result.errors() && Object.keys(result.errorBuckets).length != newExcept.length) {
                 // use set for reactive...
                 this.$set(this, 'validationErrors', result.errorBuckets)
 
@@ -44,6 +66,7 @@ const VALIDATION_MIXIN = {
             this.valueContainer,
             this.formData.controls,
             this.$form.validationClosures || {},
+            this.formData.sections,
         )
 
         // listen to validation invoke
