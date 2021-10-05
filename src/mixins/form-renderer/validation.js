@@ -30,8 +30,6 @@ const VALIDATION_MIXIN = {
 
             //console.log(except);
 
-            console.log(Object.keys(result.errorBuckets).length);
-
             var newExcept = [];
 
             except.forEach(function(element) {
@@ -39,6 +37,8 @@ const VALIDATION_MIXIN = {
                     newExcept.push(element);
                 }
             })
+
+            console.log(Object.keys(result.errorBuckets).length, newExcept.length);
 
             // field-error handling
             if (result.errors() && Object.keys(result.errorBuckets).length != newExcept.length) {

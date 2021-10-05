@@ -41497,13 +41497,13 @@ var VALIDATION_MIXIN = {
         }
       }); //console.log(except);
 
-      console.log(Object.keys(result.errorBuckets).length);
       var newExcept = [];
       except.forEach(function (element) {
         if (result.errorBuckets.hasOwnProperty(element)) {
           newExcept.push(element);
         }
-      }); // field-error handling
+      });
+      console.log(Object.keys(result.errorBuckets).length, newExcept.length); // field-error handling
 
       if (result.errors() && Object.keys(result.errorBuckets).length != newExcept.length) {
         // use set for reactive...
