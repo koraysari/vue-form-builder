@@ -41503,7 +41503,8 @@ var VALIDATION_MIXIN = {
           newExcept.push(element);
         }
       });
-      console.log(Object.keys(result.errorBuckets).length, newExcept.length); // field-error handling
+      console.log(Object.keys(result.errorBuckets).length, newExcept.length);
+      console.log(newExcept); // field-error handling
 
       if (result.errors() && Object.keys(result.errorBuckets).length != newExcept.length) {
         // use set for reactive...
