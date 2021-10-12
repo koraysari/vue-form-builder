@@ -73,28 +73,42 @@
             </label>
 
             <!-- Im using div instead of table. Table too small :( -->
-            <div :class="['list-selection']" v-for="(listItem, iItem) in control.items" :key="iItem">
+            <draggable
+                :list="control.items"
+                ghost-class="ghost"
+                :move="checkMove"
+                @start="dragging = true"
+                @end="dragging = false"
+            >
+                <div :class="['list-selection']" v-for="(listItem, iItem) in control.items" :key="iItem">
 
-                <div class="tool-block">
-                    <span class="pointer"
-                          @click="removeListItem(iItem)"
-                          v-html="$form.getIcon('close', '16px', '16px', 'red')">
-                    </span>
-                </div>
+                    <div class="tool-block">
+                        <span class="pointer"
+                            @click="removeListItem(iItem)"
+                            v-html="$form.getIcon('close', '16px', '16px', 'red')">
+                        </span>
+                    </div>
 
-                <div :class="styles.FORM.FORM_GROUP">
-                    <label>Item Value</label>
-                    <input type="text" :class="styles.FORM.FORM_CONTROL"
-                           placeholder="Radio-Value"
-                           v-model="listItem.value">
-                </div>
+                    <div :class="styles.FORM.FORM_GROUP">
+                        <label>Item Value</label>
+                        <input type="text" :class="styles.FORM.FORM_CONTROL"
+                            placeholder="Radio-Value"
+                            v-model="listItem.value">
+                    </div>
 
-                <div :class="styles.FORM.FORM_GROUP">
-                    <label>Label Text</label>
-                    <input type="text" :class="styles.FORM.FORM_CONTROL"
-                           placeholder="Label text"
-                           v-model="listItem.text">
+                    <div :class="styles.FORM.FORM_GROUP">
+                        <label>Label Text</label>
+                        <input type="text" :class="styles.FORM.FORM_CONTROL"
+                            placeholder="Label text"
+                            v-model="listItem.text">
+                    </div>
                 </div>
+            </draggable>
+
+            <div :class="styles.FORM.FORM_GROUP">
+                <label>Fast Addition</label>
+                <textarea class="w-100" rows="10" v-model="fast_addition"></textarea>
+                <button @click="fastAddition">Add</button>
             </div>
 
         </div>
@@ -105,10 +119,19 @@
     import {CONTROL_SPECIAL_CONFIG_MIXIN} from "@/mixins/control-special-config-mixin";
     import {DROPDOWN_DATA_MODES} from "@/configs/control-config-enum";
     import ListItem from "@/libraries/list-item.class";
+    import draggable from 'vuedraggable'
 
     export default {
         name: "DropdownConfigView",
         mixins: [CONTROL_SPECIAL_CONFIG_MIXIN],
+
+        data: () => ({
+            fast_addition: ''
+        }),
+
+        components: {
+            draggable,
+        },
 
         methods: {
             /**
@@ -125,6 +148,21 @@
              */
             removeListItem(index) {
                 this.control.items.splice(index, 1)
+            },
+
+            checkMove: function(e) {
+                window.console.log("Future index: " + e.draggedContext.futureIndex);
+            },
+
+            fastAddition: function() {
+                var a = this.fast_addition.split(","),
+                    i;
+
+                for (i = 0; i < a.length; i++) {
+                    this.control.items.push(new ListItem(a[i], a[i]));
+                }
+
+                this.fast_addition = "";
             }
         },
 
