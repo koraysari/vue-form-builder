@@ -40,6 +40,7 @@ const VALIDATION_MIXIN = {
 
             console.log(Object.keys(result.errorBuckets).length, newExcept.length);
             console.log(newExcept);
+            console.log(Object.keys(result.errorBuckets));
 
             // field-error handling
             if (result.errors() && Object.keys(result.errorBuckets).length != newExcept.length) {
