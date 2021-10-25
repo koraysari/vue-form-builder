@@ -8,7 +8,7 @@
                 :placeholder="control.placeholderText"
                 @input="updateValue($event.target.value)"
             />
-            <span class="totalCharacter">{{ value ? value.length : 0 }} karakter</span>
+            <span v-if="control.counter" class="totalCharacter">{{ value ? value.length : 0 }} karakter</span>
         </span>
 </template>
 

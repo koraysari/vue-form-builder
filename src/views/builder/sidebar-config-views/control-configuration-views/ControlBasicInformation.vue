@@ -37,6 +37,13 @@
             <input type="text" :class="styles.FORM.FORM_CONTROL" v-model="control.defaultValue">
         </div>
 
+        <div :class="styles.FORM.FORM_GROUP">
+            <label>
+                Add a character counter?
+                <input type="checkbox" v-model="control.counter">
+            </label>
+        </div>
+
     </SidebarToggleableContainer>
 </template>
 

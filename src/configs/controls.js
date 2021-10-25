@@ -45,7 +45,9 @@ const CONTROLS = {
         icon: 'editPencil', // Follow ICON in `icon-facade.js` to see how it works.
 
         // component mapping
-        fieldComponent: InputControl
+        fieldComponent: InputControl,
+
+        counter: true,
     },
 
     number: {
@@ -76,6 +78,7 @@ const CONTROLS = {
     text: {
         name: "Text Field",
         description: "Multiple line text field",
+        counter: true,
 
         // config data for the input field - it will be merge with the CONTROL_DEFAULT_DATA
         configData: {
@@ -312,6 +315,7 @@ const CONTROL_DEFAULT_DATA = {
     'additionalLabelClass': '', // :class for the <label>
 
     'defaultValue': '',
+    'counter': true,
 
     /**
      * Validation that applied to the control
