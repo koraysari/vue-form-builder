@@ -47,7 +47,7 @@ const VALIDATION_MIXIN = {
                 // use set for reactive...
                 this.$set(this, 'validationErrors', result.errorBuckets)
 
-                if (this.$form.validationErrorShowAlert) {
+                if (this.$form.validationErrorShowAlert && false) {
                     ALERT_DIALOG.show(this.$form.validationErrorAlertText)
                 }
 

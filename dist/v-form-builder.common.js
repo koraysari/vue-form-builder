@@ -41550,7 +41550,7 @@ var VALIDATION_MIXIN = {
         // use set for reactive...
         this.$set(this, 'validationErrors', result.errorBuckets);
 
-        if (this.$form.validationErrorShowAlert) {
+        if (this.$form.validationErrorShowAlert && false) {
           alert_dialog["a" /* ALERT_DIALOG */].show(this.$form.validationErrorAlertText);
         }
 
