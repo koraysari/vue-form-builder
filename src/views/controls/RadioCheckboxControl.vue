@@ -167,7 +167,6 @@
                 } else {
                     var difference = this.value.filter(x => this.control.items.some((item => item.value === x)));
                     difference.push(this.digerValue)
-                    console.log(difference);
                     this.updateValue(difference);
                 }
             },

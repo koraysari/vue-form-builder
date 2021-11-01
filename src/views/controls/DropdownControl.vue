@@ -1,25 +1,28 @@
 <template>
-    <select :id="control.uniqueId"
-            :class="controlFieldClass"
-            :name="control.name || control.uniqueId"
-            @input="updateValue($event.target.value)"
-            :multiple="this.control.multiple"
-    >
-        <!-- placeholder -->
-        <option disabled
-                selected
-                v-text="control.placeholderText"
-                v-if="control.placeholderText"
-        ></option>
+    <span>
+        <select :id="control.uniqueId"
+                :class="controlFieldClass"
+                :name="control.name || control.uniqueId"
+                @input="updateValue($event.target.value)"
+                :multiple="this.control.multiple"
+        >
+            <!-- placeholder -->
+            <option disabled
+                    selected
+                    v-text="control.placeholderText"
+                    v-if="control.placeholderText"
+            ></option>
 
-        <!-- list rendering -->
-        <option v-for="optionObj in listOptions"
-                :key="optionObj.value"
-                :value="optionObj.value"
-                v-text="optionObj.text"
-                :selected="value === optionObj.value"
-        ></option>
-    </select>
+            <!-- list rendering -->
+            <option v-for="optionObj in listOptions"
+                    :key="optionObj.value"
+                    :value="optionObj.value"
+                    v-text="optionObj.text"
+                    :selected="value === optionObj.value || (!(listOptions.some(item => item.value == value)) && optionObj.value == 'Diğer')"
+            ></option>
+        </select>
+        <input v-if="value == 'Diğer' || value == 'DİĞER' || !(listOptions.some(item => item.value == value))" type="text" class="form-control md-field mt-2" placeholder="Lütfen belirtin" v-model="digerValue" @change="digerChangeEvent">
+    </span>
 </template>
 
 <script>
@@ -42,6 +45,7 @@
 
             dataMode: "",
             apiURL: "",
+            digerValue: "",
         }),
 
         watch: {
@@ -67,6 +71,9 @@
         },
 
         methods: {
+            digerChangeEvent() {
+                this.updateValue(this.digerValue);
+            },
             retrieveOptionLists() {
                 this.dataMode = this.control.dataMode;
                 this.apiURL = this.control.apiURL;
