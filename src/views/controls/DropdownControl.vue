@@ -21,7 +21,7 @@
                     :selected="value === optionObj.value || (!(listOptions.some(item => item.value == value)) && optionObj.value == 'Diğer')"
             ></option>
         </select>
-        <input v-if="value == 'Diğer' || value == 'DİĞER' || !(listOptions.some(item => item.value == value))" type="text" class="form-control md-field mt-2" placeholder="Lütfen belirtin" v-model="digerValue" @change="digerChangeEvent">
+        <input v-if="(value == 'Diğer' || value == 'DİĞER' || !(listOptions.some(item => item.value == value))) && value" type="text" class="form-control md-field mt-2" placeholder="Lütfen belirtin" v-model="digerValue" @change="digerChangeEvent">
     </span>
 </template>
 
