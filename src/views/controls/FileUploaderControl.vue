@@ -35,12 +35,15 @@
     </button>
     <button
       type="button"
-      class="btn btn-danger button"
+      class="btn btn-info button"
       v-else
       @click.prevent="$refs.upload.active = false"
     >
       <i class="fa fa-stop" aria-hidden="true"></i>
       Yükleniyor...
+    </button>
+    <button type="button" class="btn btn-danger button ml-1" @click="deleteAllUpload()">
+        Yüklü Dosyaları Sil
     </button>
   </div>
 </template>
@@ -48,6 +51,7 @@
 <script>
 import { CONTROL_FIELD_EXTEND_MIXIN } from "@/mixins/control-field-extend-mixin";
 import VueUploadComponent from "vue-upload-component";
+import axios from "axios";
 
 /**
  * File Uploader Control
@@ -155,6 +159,10 @@ export default {
 
       return postItems;
     },
+
+    deleteAllUpload() {
+      axios.post("/file/deleter/" + this.control.postActionURL).then(response => this.files = []);
+    }
   },
 };
 </script>
