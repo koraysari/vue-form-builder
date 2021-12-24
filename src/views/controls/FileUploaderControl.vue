@@ -26,7 +26,7 @@
     </VueUploadComponent>
     <button
       type="button"
-      class="btn btn-success button"
+      :class="control.buttonClasses"
       v-if="!$refs.upload || !$refs.upload.active"
       @click.prevent="$refs.upload.active = true"
     >
@@ -35,14 +35,14 @@
     </button>
     <button
       type="button"
-      class="btn btn-info button"
+      :class="control.buttonClasses"
       v-else
       @click.prevent="$refs.upload.active = false"
     >
       <i class="fa fa-stop" aria-hidden="true"></i>
       Yükleniyor...
     </button>
-    <button type="button" class="btn btn-danger button ml-1" @click="deleteAllUpload()">
+    <button type="button" class="btn btn-danger button" @click="deleteAllUpload()">
         Yüklü Dosyaları Sil
     </button>
   </div>
