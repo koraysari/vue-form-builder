@@ -165,6 +165,7 @@
                 ...this.control,
                 dropdowns: {
                     minYear: 1920,
+                    maxYear: 2028,
                     months: true,
                     years: true
                 },
