@@ -39,13 +39,6 @@
 
         <div :class="styles.FORM.FORM_GROUP">
             <label>
-                Sort in reverse for pdf?
-                <input type="checkbox" v-model="sectionConfiguration.sortReverse">
-            </label>
-        </div>
-
-        <div :class="styles.FORM.FORM_GROUP">
-            <label>
                 Add a conditional question to the section?
                 <input type="checkbox" v-model="sectionConfiguration.logic">
             </label>

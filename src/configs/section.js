@@ -89,7 +89,6 @@ const SECTION_DEFAULT_DATA = {
     logic: false,
     logicControlId: '',
     logicControlValue: [],
-    sortReverse: false,
 };
 
 /**
