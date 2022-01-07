@@ -2,7 +2,7 @@
     <div :id="control.uniqueId">
         <div v-if="isSameBlock" class="radio-checkbox" :class="lineNextClasses">
 
-            <label v-for="listItem in control.items"
+            <label v-for="listItem in control.items.filter(i => i && i.text != 'Diğer')"
                    :key="listItem.text"
                    :class="positionClasses">
                 <!--- For structural, line/next is same --->
@@ -15,11 +15,15 @@
 
                 {{listItem.text}}
 
-                <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
-
                 <!--- Line By Line will need this <br> --->
                 <br v-if="displayMode === 'line'" />
             </label>
+
+            <span v-if="control.items.some((item => item.value === 'Diğer'))">
+                <label class="text-left"><input :name="inputName" v-model="diger" type="checkbox" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
+                <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
+            </span>
+
 
         </div>
         <div v-else>
@@ -73,7 +77,8 @@
         data: () => ({
             stopDefaultValueAssign: true,
             defaultBucket: '',
-            digerValue: ''
+            digerValue: '',
+            diger: false,
         }),
 
         created() {
@@ -167,10 +172,18 @@
                     this.updateValue(this.digerValue);
                 } else {
                     var difference = this.value.filter(x => this.control.items.some((item => item.value === x)));
-                    difference.push(this.digerValue)
-                    this.updateValue(difference);
+                    if(this.digerValue && this.diger) {
+                        difference.push(this.digerValue);
+                    }
+                    this.updateValue(difference.filter(i => i && i != "Diğer"));
                 }
             },
+            digerChange() {
+                if(!this.diger) {
+                    this.digerValue = '';
+                }
+                this.digerChangeEvent();
+            }
         },
 
         watch: {
