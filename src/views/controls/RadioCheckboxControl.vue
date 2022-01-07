@@ -19,7 +19,7 @@
                 <br v-if="displayMode === 'line'" />
             </label>
 
-            <span v-if="control.items.some((item => item.value === 'Diğer'))">
+            <span v-if="control.items.some((item => item.text === 'Diğer'))">
                 <label class="text-left"><input :name="inputName" v-model="diger" type="checkbox" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
                 <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
             </span>
@@ -31,7 +31,7 @@
             <div :class="styles.ROW" class="radio-checkbox">
 
                 <div :class="[styles.COLUMNS.COL6, positionClasses]"
-                     v-for="listItem in control.items"
+                     v-for="listItem in control.items.filter(i => i && i.text != 'Diğer')"
                      :key="listItem.text">
 
                     <label>
@@ -48,6 +48,11 @@
                         <input v-if="listItem.text == 'Diğer' || listItem.text == 'DİĞER'" type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
                         
                     </label>
+                </div>
+
+                <div v-if="control.items.some((item => item.text === 'Diğer'))" :class="[styles.COLUMNS.COL6, positionClasses]">
+                    <label><input :name="inputName" v-model="diger" type="checkbox" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
+                    <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
                 </div>
 
             </div>
