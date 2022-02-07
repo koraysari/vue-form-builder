@@ -92,7 +92,9 @@
             if (!this.valueContainer[this.controlName]) {
                 this.valueContainer[this.controlName] = ''
             }
-            this.valueContainer[this.controlName] = this.valueContainer[this.controlName].filter(i => i || i != '"Diğer"' );
+            if(this.valueContainer[this.controlName]) [
+                this.valueContainer[this.controlName] = this.valueContainer[this.controlName].filter(i => i || i != '"Diğer"' )
+            ]
         },
 
         mounted() {
