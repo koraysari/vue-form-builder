@@ -51,7 +51,7 @@
                 </div>
 
                 <div v-if="control.items.some((item => item.text === 'Diğer'))" :class="[styles.COLUMNS.COL6, positionClasses]">
-                    <label><input :name="inputName" v-model="diger" type="checkbox" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
+                    <label><input :name="inputName" v-model="diger" type="radio" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
                     <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
                 </div>
 
@@ -92,9 +92,9 @@
             if (!this.valueContainer[this.controlName]) {
                 this.valueContainer[this.controlName] = ''
             }
-            if(this.valueContainer[this.controlName]) [
+            if(this.valueContainer[this.controlName]) {
                 this.valueContainer[this.controlName] = this.valueContainer[this.controlName].filter(i => i || i != '"Diğer"' )
-            ]
+            }
         },
 
         mounted() {

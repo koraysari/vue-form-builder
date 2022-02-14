@@ -188,7 +188,16 @@
                  * @param {Date} date
                  */
                 onSelect: this.getValue
-            })
+            });
+
+            var that = this;
+
+            if(this.value) {
+                setTimeout(
+                    function() {
+                        that.setValue(this.value);
+                    }, 2000);
+            }
         },
 
         beforeDestroy() {
