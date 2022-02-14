@@ -181,6 +181,11 @@
                     if (this.control.defaultValue) {
                         this.setValue(this.control.defaultValue);
                     }
+                    var that = this;
+                    setTimeout(
+                        function() {
+                             that.setValue(that.value);
+                        }, 2000);
                 },
 
                 /**
@@ -188,7 +193,7 @@
                  * @param {Date} date
                  */
                 onSelect: this.getValue
-            }).datepicker("setDate", this.value);
+            });
         },
 
         beforeDestroy() {
