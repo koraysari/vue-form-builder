@@ -54,7 +54,7 @@
                 <div v-if="control.items.some((item => item.text === 'Diğer'))" :class="[styles.COLUMNS.COL6, positionClasses]">
                     <label><input :name="inputName" v-model="diger" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
                     <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
-                    <div v-if="digerValue && true" class="invalid-feedback">Bu alan zorunludur!</div>
+                    <div v-if="!digerValue && diger" class="invalid-feedback">Bu alan zorunludur!</div>
                 </div>
 
             </div>
