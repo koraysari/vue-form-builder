@@ -26725,12 +26725,12 @@ var DatePickerControl_component = Object(componentNormalizer["a" /* default */])
 )
 
 /* harmony default export */ var DatePickerControl = (DatePickerControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"30facb47-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/NumberControl.vue?vue&type=template&id=004b9319&
-var NumberControlvue_type_template_id_004b9319_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',[(_vm.control.isPhone)?_c('VuePhoneNumberInput',{attrs:{"dropdownOptions":_vm.dropdownOptions,"defaultCountry":"TR","mode":"auto","disabledFormatting":"false","validCharactersOnly":"true"},on:{"update":_vm.onUpdate},model:{value:(_vm.tel),callback:function ($$v) {_vm.tel=$$v},expression:"tel"}}):_c('input',{class:_vm.controlFieldClass,attrs:{"id":_vm.control.uniqueId,"type":"number","name":_vm.control.name,"placeholder":_vm.control.placeholderText},domProps:{"value":_vm.number},on:{"input":function($event){return _vm.convertToNumber($event.target.value)}}})],1)}
-var NumberControlvue_type_template_id_004b9319_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"30facb47-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/NumberControl.vue?vue&type=template&id=34cae654&
+var NumberControlvue_type_template_id_34cae654_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',[(_vm.control.isPhone)?_c('VuePhoneNumberInput',{attrs:{"id":_vm.control.uniqueId,"dropdownOptions":_vm.dropdownOptions,"defaultCountry":"TR","mode":"auto","disabledFormatting":"false","validCharactersOnly":"true"},on:{"update":_vm.onUpdate},model:{value:(_vm.tel),callback:function ($$v) {_vm.tel=$$v},expression:"tel"}}):_c('input',{class:_vm.controlFieldClass,attrs:{"id":_vm.control.uniqueId,"type":"number","name":_vm.control.name,"placeholder":_vm.control.placeholderText},domProps:{"value":_vm.number},on:{"input":function($event){return _vm.convertToNumber($event.target.value)}}})],1)}
+var NumberControlvue_type_template_id_34cae654_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/controls/NumberControl.vue?vue&type=template&id=004b9319&
+// CONCATENATED MODULE: ./src/views/controls/NumberControl.vue?vue&type=template&id=34cae654&
 
 // EXTERNAL MODULE: ./node_modules/vue-phone-number-input/dist/vue-phone-number-input.common.js
 var vue_phone_number_input_common = __webpack_require__("7bec");
@@ -26824,6 +26824,10 @@ var vue_phone_number_input_common_default = /*#__PURE__*/__webpack_require__.n(v
     if (this.control.defaultValue) {
       this.convertToNumber(this.control.defaultValue);
     }
+
+    if (this.control.isPhone) {
+      this.tel = this.value.substring(1);
+    }
   }
 });
 // CONCATENATED MODULE: ./src/views/controls/NumberControl.vue?vue&type=script&lang=js&
@@ -26842,8 +26846,8 @@ var vue_phone_number_inputvue_type_style_index_0_lang_css_ = __webpack_require__
 
 var NumberControl_component = Object(componentNormalizer["a" /* default */])(
   controls_NumberControlvue_type_script_lang_js_,
-  NumberControlvue_type_template_id_004b9319_render,
-  NumberControlvue_type_template_id_004b9319_staticRenderFns,
+  NumberControlvue_type_template_id_34cae654_render,
+  NumberControlvue_type_template_id_34cae654_staticRenderFns,
   false,
   null,
   null,

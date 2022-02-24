@@ -1,7 +1,7 @@
 <template>
 
     <span>
-        <VuePhoneNumberInput v-if="control.isPhone" v-model="tel" @update="onUpdate" :dropdownOptions="dropdownOptions" defaultCountry="TR" mode="auto" disabledFormatting="false" validCharactersOnly="true"/>
+        <VuePhoneNumberInput :id="control.uniqueId" v-if="control.isPhone" v-model="tel" @update="onUpdate" :dropdownOptions="dropdownOptions" defaultCountry="TR" mode="auto" disabledFormatting="false" validCharactersOnly="true"/>
         <input v-else :id="control.uniqueId"
             type="number"
             :class="controlFieldClass"
@@ -94,6 +94,9 @@
             // set default value (if exists)
             if (this.control.defaultValue) {
                 this.convertToNumber(this.control.defaultValue)
+            }
+            if(this.control.isPhone) {
+                this.tel = this.value.substring(1);
             }
         },
     }
