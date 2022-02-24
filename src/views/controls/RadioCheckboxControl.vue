@@ -105,9 +105,9 @@
                     this.updateValue([this.control.defaultValue])
                 }
             }
-            if(this.valueContainer[this.controlName]) {
+            /* if(this.valueContainer[this.controlName]) {
                 this.valueContainer[this.controlName] = this.valueContainer[this.controlName].filter(i => i || i != '"Diğer"' )
-            }
+            } */
         },
 
         computed: {
