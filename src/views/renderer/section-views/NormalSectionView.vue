@@ -1,5 +1,5 @@
 <template>
-    <div class="normal-section" v-if="checkLogic()">
+    <div class="normal-section" v-show="checkLogic()">
         <div class="headline-block" v-show="section.isShowHeadline">
             <h2 :class="section.headlineAdditionalClass" v-text="section.headline"></h2>
             <p :class="section.subHeadlineAdditionalClass" v-text="section.subHeadline"></p>
