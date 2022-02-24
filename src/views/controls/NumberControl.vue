@@ -30,6 +30,13 @@
         components: {
             VuePhoneNumberInput,
         },
+        
+        props: {
+            valueContainer: {
+                type: Object,
+                default: () => ({})
+            }
+        },
 
         data: () => ({
             number: 0,
@@ -95,12 +102,11 @@
             if (this.control.defaultValue) {
                 this.convertToNumber(this.control.defaultValue)
             }
-        },
-        mounted() {
-            if(this.control.isPhone) {
-                this.tel = this.value.substring(1);
+
+            if(this.control.isPhone && this.valueContainer[this.control.uniqueId]) {
+                this.tel = this.valueContainer[this.control.uniqueId] + ''.substring(1);
             }
-        }
+        },
     }
 </script>
 
