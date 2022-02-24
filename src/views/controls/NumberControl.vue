@@ -104,7 +104,7 @@
             }
 
             if(this.control.isPhone && this.valueContainer[this.control.uniqueId]) {
-                this.tel = this.valueContainer[this.control.uniqueId] + ''.substring(2);
+                this.tel = (this.valueContainer[this.control.uniqueId] + '').substring(1);
             }
         },
     }
