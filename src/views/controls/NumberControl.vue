@@ -95,10 +95,12 @@
             if (this.control.defaultValue) {
                 this.convertToNumber(this.control.defaultValue)
             }
+        },
+        mounted() {
             if(this.control.isPhone) {
                 this.tel = this.value.substring(1);
             }
-        },
+        }
     }
 </script>
 
