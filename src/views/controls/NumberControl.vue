@@ -102,11 +102,13 @@
             if (this.control.defaultValue) {
                 this.convertToNumber(this.control.defaultValue)
             }
+        },
 
+        mounted() {
             if(this.control.isPhone && this.valueContainer[this.control.uniqueId]) {
                 this.tel = (this.valueContainer[this.control.uniqueId] + '').substring(1);
             }
-        },
+        }
     }
 </script>
 
