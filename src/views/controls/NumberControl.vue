@@ -105,11 +105,12 @@
         },
 
         mounted() {
+            var that = this;
             setTimeout(
                 function() {
-                    if(this.control.isPhone && this.valueContainer[this.control.uniqueId]) {
-                        console.log(this.valueContainer[this.control.uniqueId]);
-                        this.tel = (this.valueContainer[this.control.uniqueId] + '').substring(1);
+                    if(that.control.isPhone && that.valueContainer[that.control.uniqueId]) {
+                        console.log(that.valueContainer[that.control.uniqueId]);
+                        that.tel = (that.valueContainer[that.control.uniqueId] + '').substring(1);
                     }
                 }, 2000);
         }
