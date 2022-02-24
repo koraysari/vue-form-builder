@@ -106,6 +106,7 @@
 
         mounted() {
             if(this.control.isPhone && this.valueContainer[this.control.uniqueId]) {
+                console.log(this.valueContainer[this.control.uniqueId]);
                 this.tel = (this.valueContainer[this.control.uniqueId] + '').substring(1);
             }
         }
