@@ -27064,12 +27064,12 @@ var DropdownControl_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var DropdownControl = (DropdownControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"30facb47-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/FileUploaderControl.vue?vue&type=template&id=fc308c28&
-var FileUploaderControlvue_type_template_id_fc308c28_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('ul',_vm._l((_vm.files),function(file){return _c('li',{key:file.id},[_vm._v(" "+_vm._s(file.name)+" - "),(file.error)?_c('span',[_vm._v(" Error: "+_vm._s(file.error)+" ")]):_vm._e(),_vm._v(" "),(file.success)?_c('span',[_vm._v(" Success: "+_vm._s(file.success)+" ")]):_vm._e()])}),0),_c('VueUploadComponent',{ref:"upload",class:_vm.controlClasses,attrs:{"post-action":"/file/uploader","inputId":_vm.control.uniqueId,"multiple":_vm.control.isMultiple,"accept":_vm.control.accept,"maximum":_vm.maximumFilesCanBeUploaded,"headers":_vm.configuredHeaders,"data":_vm.configuredPostData},on:{"input-file":_vm.inputFile,"input-filter":_vm.inputFilter},model:{value:(_vm.files),callback:function ($$v) {_vm.files=$$v},expression:"files"}},[_c('button',{class:_vm.control.buttonClasses,domProps:{"textContent":_vm._s(_vm.control.buttonLabel)}})]),(!_vm.$refs.upload || !_vm.$refs.upload.active)?_c('button',{class:_vm.control.buttonClasses,attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();_vm.$refs.upload.active = true}}},[_c('i',{staticClass:"fa fa-arrow-up",attrs:{"aria-hidden":"true"}}),_vm._v(" Yüklemeye Başla ")]):_c('button',{class:_vm.control.buttonClasses,attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();_vm.$refs.upload.active = false}}},[_c('i',{staticClass:"fa fa-stop",attrs:{"aria-hidden":"true"}}),_vm._v(" Yükleniyor... ")]),_c('button',{staticClass:"btn btn-danger button",attrs:{"type":"button"},on:{"click":function($event){return _vm.deleteAllUpload()}}},[_vm._v(" Yüklü Dosyaları Sil ")])],1)}
-var FileUploaderControlvue_type_template_id_fc308c28_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"30facb47-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/FileUploaderControl.vue?vue&type=template&id=3220e523&
+var FileUploaderControlvue_type_template_id_3220e523_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('ul',_vm._l((_vm.files),function(file){return _c('li',{key:file.id},[_vm._v(" "+_vm._s(file.name)+" - "),(file.error)?_c('span',[_vm._v(" Error: "+_vm._s(file.error)+" ")]):_vm._e(),_vm._v(" "),(file.success)?_c('span',[_vm._v(" Success: "+_vm._s(file.success)+" ")]):_vm._e()])}),0),_c('VueUploadComponent',{ref:"upload",class:_vm.controlClasses,attrs:{"post-action":"/file/uploader","inputId":_vm.control.uniqueId,"multiple":_vm.control.isMultiple,"accept":_vm.control.accept,"maximum":_vm.maximumFilesCanBeUploaded,"headers":_vm.configuredHeaders,"data":_vm.configuredPostData},on:{"input-file":_vm.inputFile,"input-filter":_vm.inputFilter},model:{value:(_vm.files),callback:function ($$v) {_vm.files=$$v},expression:"files"}},[_c('button',{class:_vm.control.buttonClasses,domProps:{"textContent":_vm._s(_vm.control.buttonLabel)}})]),(!_vm.$refs.upload || !_vm.$refs.upload.active)?_c('button',{class:_vm.control.buttonClasses,staticStyle:{"margin-right":"5px"},attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();_vm.$refs.upload.active = true}}},[_c('i',{staticClass:"fa fa-arrow-up",attrs:{"aria-hidden":"true"}}),_vm._v(" Yüklemeye Başla ")]):_c('button',{class:_vm.control.buttonClasses,attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();_vm.$refs.upload.active = false}}},[_c('i',{staticClass:"fa fa-stop",attrs:{"aria-hidden":"true"}}),_vm._v(" Yükleniyor... ")]),_c('button',{staticClass:"btn btn-danger button",attrs:{"type":"button"},on:{"click":function($event){return _vm.deleteAllUpload()}}},[_vm._v(" Yüklü Dosyaları Sil ")])],1)}
+var FileUploaderControlvue_type_template_id_3220e523_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/controls/FileUploaderControl.vue?vue&type=template&id=fc308c28&
+// CONCATENATED MODULE: ./src/views/controls/FileUploaderControl.vue?vue&type=template&id=3220e523&
 
 // EXTERNAL MODULE: ./node_modules/vue-upload-component/dist/vue-upload-component.js
 var vue_upload_component = __webpack_require__("8019");
@@ -27081,6 +27081,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/FileUploaderControl.vue?vue&type=script&lang=js&
 
+//
 //
 //
 //
@@ -27259,8 +27260,8 @@ var FileUploaderControlvue_type_style_index_0_lang_css_ = __webpack_require__("b
 
 var FileUploaderControl_component = Object(componentNormalizer["a" /* default */])(
   controls_FileUploaderControlvue_type_script_lang_js_,
-  FileUploaderControlvue_type_template_id_fc308c28_render,
-  FileUploaderControlvue_type_template_id_fc308c28_staticRenderFns,
+  FileUploaderControlvue_type_template_id_3220e523_render,
+  FileUploaderControlvue_type_template_id_3220e523_staticRenderFns,
   false,
   null,
   null,

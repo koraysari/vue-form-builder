@@ -29,6 +29,7 @@
       :class="control.buttonClasses"
       v-if="!$refs.upload || !$refs.upload.active"
       @click.prevent="$refs.upload.active = true"
+      style="margin-right: 5px;"
     >
       <i class="fa fa-arrow-up" aria-hidden="true"></i>
       Yüklemeye Başla 
