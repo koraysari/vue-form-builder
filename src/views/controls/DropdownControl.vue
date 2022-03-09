@@ -156,9 +156,12 @@
 
         created() {
             this.retrieveOptionLists()
-            if(!(this.listOptions.some(item => item.value == this.value))) {
-                this.digerValue = this.value;
-            }
+             setTimeout(
+                function() {
+                    if(!(this.listOptions.some(item => item.value == this.value))) {
+                        this.digerValue = this.value;
+                    }
+                }, 2000);
         }
     }
 </script>
