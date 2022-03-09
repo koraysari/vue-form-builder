@@ -156,8 +156,8 @@
 
         created() {
             this.retrieveOptionLists()
-            if(!(listOptions.some(item => item.value == value))) {
-                this.digerValue = value;
+            if(!(this.listOptions.some(item => item.value == this.value))) {
+                this.digerValue = this.value;
             }
         }
     }
