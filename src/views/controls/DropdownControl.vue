@@ -158,7 +158,7 @@
             this.retrieveOptionLists()
              setTimeout(
                 function() {
-                    if(!(this.listOptions.some(item => item.value == this.value))) {
+                    if(!(this.control.items.some(item => item.value == this.value))) {
                         this.digerValue = this.value;
                     }
                 }, 2000);
