@@ -7,11 +7,11 @@
                 :multiple="this.control.multiple"
         >
             <!-- placeholder -->
-            <option disabled
+            <!-- <option disabled
                     selected
                     v-text="control.placeholderText"
                     v-if="control.placeholderText"
-            ></option>
+            ></option> -->
 
             <!-- list rendering -->
             <option v-for="optionObj in listOptions"
