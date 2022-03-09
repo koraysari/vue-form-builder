@@ -156,10 +156,11 @@
 
         created() {
             this.retrieveOptionLists()
+            var that = this;
              setTimeout(
                 function() {
-                    if(!(this.control.items.some(item => item.value == this.value))) {
-                        this.digerValue = this.value;
+                    if(!(that.control.items.some(item => item.value == that.value))) {
+                        that.digerValue = that.value;
                     }
                 }, 2000);
         }
