@@ -20,7 +20,7 @@
             </label>
 
             <span v-if="control.items.some((item => item.text === 'Diğer'))">
-                <label class="text-left"><input :name="inputName" v-model="diger" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
+                <label class="text-left"><input :name="inputName" v-model="valueContainer[controlName]" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
                 <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
                 <div v-if="!digerValue && diger" class="invalid-feedback">Bu alan zorunludur!</div>
             </span>
@@ -52,7 +52,7 @@
                 </div>
 
                 <div v-if="control.items.some((item => item.text === 'Diğer'))" :class="[styles.COLUMNS.COL6, positionClasses]">
-                    <label><input :name="inputName" v-model="diger" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
+                    <label><input :name="inputName" v-model="valueContainer[controlName]" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
                     <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
                     <div v-if="!digerValue && diger" class="invalid-feedback">Bu alan zorunludur!</div>
                 </div>
