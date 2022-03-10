@@ -20,8 +20,8 @@
             </label>
 
             <span v-if="control.items.some((item => item.text === 'Diğer'))">
-                <label class="text-left"><input :name="inputName" v-model="valueContainer[controlName]" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
-                <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
+                <label class="text-left"><input :id="controlName + '-radio-check'" :name="inputName" v-model="diger" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
+                <input type="text" :id="controlName + '-text'" class="form-control md-field diger-inputs" v-model="digerValue" @change="digerChangeEvent">
                 <div v-if="!digerValue && diger" class="invalid-feedback">Bu alan zorunludur!</div>
             </span>
 
@@ -52,8 +52,8 @@
                 </div>
 
                 <div v-if="control.items.some((item => item.text === 'Diğer'))" :class="[styles.COLUMNS.COL6, positionClasses]">
-                    <label><input :name="inputName" v-model="valueContainer[controlName]" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
-                    <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
+                    <label><input :id="controlName + '-radio-check'" :name="inputName" v-model="diger" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
+                    <input type="text" :id="controlName + '-text'" class="form-control md-field diger-inputs" v-model="digerValue" @change="digerChangeEvent">
                     <div v-if="!digerValue && diger" class="invalid-feedback">Bu alan zorunludur!</div>
                 </div>
 
@@ -113,13 +113,11 @@
                 function() {
                     if(that.isRadio){
                         if(!that.control.items.some(item => item.value === that.value)){
-                            //that.valueContainer[that.controlName] = "Diğer";
                             that.digerValue = that.value;
                         }
                     } else {
                         var difference = that.valueContainer[that.controlName].filter(x => !that.control.items.some((item => item.value == x)));
                         if(difference.length > 0) {
-                            //that.valueContainer[that.controlName].push("Diğer");
                             that.digerValue = difference
                         }
                     }
@@ -197,10 +195,10 @@
                     this.updateValue(this.digerValue);
                 } else {
                     var difference = this.value.filter(x => this.control.items.some((item => item.value === x)));
-                    if(this.digerValue && this.valueContainer[this.controlName].some(item => item == "Diğer")) {
+                    if(this.digerValue && this.diger) {
                         difference.push(this.digerValue);
                     }
-                    this.updateValue(difference.filter(i => i)); /* && i != "Diğer")); */
+                    this.updateValue(difference.filter(i => i && i != "Diğer"));
                 }
             },
             digerChange() {
