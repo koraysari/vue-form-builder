@@ -113,11 +113,13 @@
                 function() {
                     if(that.isRadio){
                         if(!that.control.items.some(item => item.value === that.value)){
+                            that.valueContainer[that.controlName] = "Diğer";
                             that.digerValue = that.value;
                         }
                     } else {
                         var difference = that.valueContainer[that.controlName].filter(x => !that.control.items.some((item => item.value == x)));
                         if(difference.length > 0) {
+                            that.valueContainer[that.controlName].push("Diğer");
                             that.digerValue = difference
                         }
                     }
