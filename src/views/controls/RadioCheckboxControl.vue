@@ -116,7 +116,7 @@
                             that.digerValue = that.value;
                         }
                     } else {
-                        var difference = that.valueContainer[that.controlName].filter(x => that.control.items.some((item => item.value === x)));
+                        var difference = that.valueContainer[that.controlName].filter(x => that.control.items.some((item => item.value != x)));
                         if(difference.length > 0) {
                             that.digerValue = difference
                         }
