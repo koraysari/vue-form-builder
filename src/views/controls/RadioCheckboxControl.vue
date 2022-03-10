@@ -20,7 +20,7 @@
             </label>
 
             <span v-if="control.items.some((item => item.text === 'Diğer'))">
-                <label class="text-left"><input :name="inputName" v-model="diger" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
+                <label class="text-left"><input :name="inputName" v-model="valueContainer[controlName]" :type="control.type" class="" value="Diğer" @change="digerChange"> Diğer <!----><br></label>
                 <input type="text" class="form-control md-field" v-model="digerValue" @change="digerChangeEvent">
                 <div v-if="!digerValue && diger" class="invalid-feedback">Bu alan zorunludur!</div>
             </span>
@@ -108,15 +108,15 @@
             /* if(this.valueContainer[this.controlName]) {
                 this.valueContainer[this.controlName] = this.valueContainer[this.controlName].filter(i => i || i != '"Diğer"' )
             } */
-
+            var that = this;
             setTimeout(
                 function() {
-                    if(this.isRadio) {
-                        this.digerValue = this.value
+                    if(that.isRadio) {
+                        that.digerValue = that.value
                     } else {
-                        var difference = this.value.filter(x => this.control.items.some((item => item.value === x)));
+                        var difference = that.valueContainer[that.controlName].filter(x => that.control.items.some((item => item.value === x)));
                         if(difference.length > 0) {
-                            this.digerValue = difference.value
+                            that.digerValue = difference
                         }
                     }
                 }, 2000);
