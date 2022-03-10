@@ -108,6 +108,18 @@
             /* if(this.valueContainer[this.controlName]) {
                 this.valueContainer[this.controlName] = this.valueContainer[this.controlName].filter(i => i || i != '"Diğer"' )
             } */
+
+            setTimeout(
+                function() {
+                    if(this.isRadio) {
+                        this.digerValue = this.value
+                    } else {
+                        var difference = this.value.filter(x => this.control.items.some((item => item.value === x)));
+                        if(difference.length > 0) {
+                            this.digerValue = difference.value
+                        }
+                    }
+                }, 2000);
         },
 
         computed: {
