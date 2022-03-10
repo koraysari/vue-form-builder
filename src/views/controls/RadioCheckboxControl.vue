@@ -108,18 +108,20 @@
             /* if(this.valueContainer[this.controlName]) {
                 this.valueContainer[this.controlName] = this.valueContainer[this.controlName].filter(i => i || i != '"Diğer"' )
             } */
-            /* var that = this;
+            var that = this;
             setTimeout(
                 function() {
-                    if(that.isRadio) {
-                        that.digerValue = that.value
+                    if(that.isRadio){
+                        if(!that.control.items.some(item => item.value === that.value)){
+                            that.digerValue = that.value;
+                        }
                     } else {
                         var difference = that.valueContainer[that.controlName].filter(x => that.control.items.some((item => item.value === x)));
                         if(difference.length > 0) {
                             that.digerValue = difference
                         }
                     }
-                }, 2000); */
+                }, 2000);
         },
 
         computed: {
