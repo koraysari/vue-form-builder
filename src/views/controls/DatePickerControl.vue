@@ -184,7 +184,9 @@
                     var that = this;
                     setTimeout(
                         function() {
-                             that.setValue(that.value);
+                            if(that.value) {
+                                that.setValue(that.value);
+                            }
                         }, 2000);
                 },
 
