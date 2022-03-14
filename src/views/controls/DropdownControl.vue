@@ -18,7 +18,7 @@
                     :key="optionObj.value"
                     :value="optionObj.value"
                     v-text="optionObj.text"
-                    :selected="value === optionObj.value || (value && !(listOptions.some(item => item.value == value) && optionObj.value == 'Diğer'))"
+                    :selected="value === optionObj.value || (value && !(listOptions.some(item => item.value == value)) && optionObj.value == 'Diğer')"
             ></option>
         </select>
         <!-- || (!(listOptions.some(item => item.value == value)) && optionObj.value == 'Diğer') -->
