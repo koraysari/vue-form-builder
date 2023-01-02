@@ -43656,6 +43656,7 @@ var validation_Validation = /*#__PURE__*/function () {
           return isRegexPassed(fieldValue, validationRule.additionalValue);
 
         default:
+          console.log(validationRule);
           throw new TypeError("This validation type ".concat(validationRule.ruleType, " is not supported."));
       }
     }

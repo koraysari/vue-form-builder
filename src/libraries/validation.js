@@ -143,6 +143,7 @@ export default class Validation {
         return isRegexPassed(fieldValue, validationRule.additionalValue);
 
       default:
+        console.log(validationRule);
         throw new TypeError(
           `This validation type ${validationRule.ruleType} is not supported.`
         );
